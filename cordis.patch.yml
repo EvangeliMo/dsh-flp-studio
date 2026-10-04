@@ -1,0 +1,10 @@
+# dsh-flp-studio bundle patch: mount the host service row + the agent-tool row.
+# The client half (sidebar FLP browser) is discovered via dsh.client; the host
+# wire contracts load through the ./typert export; the model-facing tools load
+# through the ./tools entry.
+- insert:
+    - id: dsh-flp-studio
+      name: dsh-flp-studio
+
+    - id: flp-studio-tools
+      name: dsh-flp-studio/tools

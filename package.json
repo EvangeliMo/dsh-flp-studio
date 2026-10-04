@@ -1,0 +1,64 @@
+{
+  "name": "dsh-flp-studio",
+  "version": "0.1.0",
+  "type": "module",
+  "description": "FL Studio project (.flp) browser and analyzer for DeepSeek Harness Web. Reads project structure, channels, patterns, notes and music features; supports backup-safe note editing via a local Python/PyFLP bridge.",
+  "main": "./lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./tools": "./lib/tools.js",
+    "./typert": "./lib/contracts.js",
+    "./client": "./lib/client.js",
+    "./cordis.patch.yml": "./cordis.patch.yml",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib",
+    "python",
+    "cordis.patch.yml",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build:client": "node scripts/build-client.mjs",
+    "check:client": "node scripts/build-client.mjs --check",
+    "test:host": "node scripts/test-host.mjs",
+    "prepublishOnly": "node scripts/build-client.mjs"
+  },
+  "keywords": [
+    "deepseek",
+    "deepseek-harness",
+    "dsh",
+    "dsh-plugin",
+    "fl-studio",
+    "flp",
+    "music",
+    "project",
+    "analysis"
+  ],
+  "license": "MIT",
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "inject": [
+        "@deepseek-ai/dsh-client-locale",
+        "@deepseek-ai/dsh-api-remotes",
+        "slots"
+      ]
+    }
+  },
+  "dependencies": {
+    "zod": "^4.4.3"
+  },
+  "peerDependencies": {
+    "@deepseek-ai/cordis": "^4.0.1",
+    "@deepseek-ai/dsh-tools": "^0.1.0-rc.7",
+    "@deepseek-ai/dsh-typert-protocol": "^0.1.0-rc.6"
+  },
+  "devDependencies": {
+    "esbuild": "^0.28.1"
+  }
+}
